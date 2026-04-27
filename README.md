@@ -1,7 +1,12 @@
 # AMR_IO_tools
 Codes and scripts for reading data from AMR hydrodynamic simulations
-
 Currenlyt, python scripts are provided. Details are described below
+
+# Dataset description
+A single simulation data (e.g., snap.h5) is a snapshot of radiation-hydrodynamic simulation in 2D cylindrical coordinate (r,z). 
+Since the original simulations eemply adaptive-mesh-refinement (AMR), the grid resolution can be different from a domain to another. 
+Variables on specific numerical cells are therefore kept in hierarchical way, which is complicated. 
+Ths following codes help users to extract values at specific points on the simulation domain, output them in ASCII format, and make plots. 
 
 # HDF5 setting
 Simulation data are stored in HDF5 (Hierarchical Data Fromat version 5; https://www.hdfgroup.org/solutions/hdf5/).
@@ -53,4 +58,4 @@ The code reads the data file and extracts some values.
   ```
   The units of the time and coordinates are seconds and light-seconds (~ 3.0e10 cm).
   The first line means the simulation epoch is t = 10367926.400037047 ~ 120 days.
-  The simulatin domain is expressed by a Numpy array with 4 components, (x_min, x_max, y_min, y_max). 
+  The simulatin domain is expressed by a Numpy array with 4 components, (r_min, r_max, z_min, z_max). 
