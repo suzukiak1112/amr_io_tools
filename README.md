@@ -133,3 +133,33 @@ This example retrieve physical values from the model data, saves them in an ASCI
   import matplotlib.pyplot as plt
   import matplotlib.gridspec as gridspec
   ```
+  Users may learn how to use matplotlib in `https://matplotlib.org/stable/`.
+
+- First, the code initializas the figure and define three subplots, ax1, ax2, ax3:
+  ```
+  fig=plt.figure()
+  ax1 = fig.add_subplot(311)
+  ax2 = fig.add_subplot(312)
+  ax3 = fig.add_subplot(313)
+  ```
+- In the top panel (ax1), the code plots the radial density profile obtained in the data retrieving part. 
+  ```
+  ax1.plot(np.array(rad_list)*model.units["r"], 
+           np.array(var_list).T[0]*model.units["rho"],
+           label="rho",color="black")
+  ```
+  Here, density is simply plotted as a fucntion of radius, but in physical unit. 
+  `np.array(rad_list)` converts the radius list `rad_list` into 1D array (2000,). 
+  `np.array(var_list)` converts the variable list `var_list` into 2D array (2000, 7). 
+  The transpose `np.array(var_list).T` has its shape of (7, 2000) for plotting purpose. 
+  By multiplying `model.units["r"]` and `model.units["rho"]`, the radius and density (normalized in the raw data) recoverdd their physical dimension. 
+- The code has retrieved the ejecta mass fraction Xej and CSM mass fraction Xcsm. 
+  ```
+  ax1.fill_between(np.array(rad_list)*model.units["r"], 
+                   np.array(var_list).T[0]*model.units["rho"]*(np.array(var_list).T[5]), 
+                   color="blue",alpha=0.3)
+  ax1.fill_between(np.array(rad_list)*model.units["r"], 
+                   np.array(var_list).T[0]*model.units["rho"]*(np.array(var_list).T[6]), 
+                   color="gray",alpha=0.3)
+
+  ```
