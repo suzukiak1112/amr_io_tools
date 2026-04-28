@@ -153,7 +153,9 @@ This example retrieve physical values from the model data, saves them in an ASCI
   `np.array(var_list)` converts the variable list `var_list` into 2D array (2000, 7). 
   The transpose `np.array(var_list).T` has its shape of (7, 2000) for plotting purpose. 
   By multiplying `model.units["r"]` and `model.units["rho"]`, the radius and density (normalized in the raw data) recoverdd their physical dimension. 
-- The code has retrieved the ejecta mass fraction Xej and CSM mass fraction Xcsm. 
+- The code has retrieved the ejecta mass fraction Xej and CSM mass fraction Xcsm. These values are equal to 1 in ejecta (CSM) and 0 outside ejecta or CSM. 
+  Therefore, the product rho * Xej, for example, is equal torho in the ejecta, while is zero outside the ejecta. 
+  The following commant therefore fill the ejecta and ejecta+CSM with blue and gray color. 
   ```
   ax1.fill_between(np.array(rad_list)*model.units["r"], 
                    np.array(var_list).T[0]*model.units["rho"]*(np.array(var_list).T[5]), 
