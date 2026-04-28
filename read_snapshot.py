@@ -21,6 +21,9 @@ if __name__=='__main__':
         
         # you can get the name list of variables as follows
         print(model.var.keys())
+
+        # you can check the units for variables as follows
+        print(model.units)
         
         # access to the data to retrieve physical values
         # in this example, you get variables "rho" "v1" "e_rad" at (r,z)
