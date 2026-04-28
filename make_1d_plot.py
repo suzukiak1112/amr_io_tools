@@ -5,8 +5,7 @@ import h5py
 import read_model
 
 # specify input file here
-#input_file="../result/snap_t12d_lumi.h5"
-input_file="../result/snap.h5"
+input_file="./snap.h5"
 # specify output file here
 output_file="./test.txt"
 
