@@ -5,7 +5,8 @@ import h5py
 import read_model
 
 # specify input file here
-input_file="./snap.h5"
+#input_file="./snap.h5"
+input_file="../hydro/csm2d/result/snap.h5"
 # specify output file here
 output_file="./test.txt"
 
@@ -71,7 +72,7 @@ if __name__=='__main__':
     luminosity = flux*model.units["f1"] * 4.0*np.pi*(np.array(rad_list)*model.units["r"])**2
     ax3.plot(np.array(rad_list)*model.units["r"], 
              luminosity, 
-             label="e_rad",color="black")
+             color="black")
     
     # axis settings
     ax1.set_yscale("log")
@@ -80,4 +81,5 @@ if __name__=='__main__':
     ax2.set_ylim([1.0e6,1.0e9])
     ax3.set_yscale("log")
     ax3.set_ylim([1.0e40,1.0e45])
+    plt.savefig("radial.png",format="png")
     plt.show()
