@@ -31,7 +31,6 @@ if __name__=='__main__':
         # check the first 10 items in the unit
         print(rad_list[:10])
         print(var_list[:10])
-        print(model.units["r"])
     #
     # saving the 1D prpfile to an output text file in the same directory
     #
