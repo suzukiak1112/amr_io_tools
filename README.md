@@ -167,12 +167,22 @@ The resultant figure should look like this:
                    np.array(var_list).T[0]*model.units["rho"]*(np.array(var_list).T[6]), 
                    color="gray",alpha=0.3)
   ```
-- The velocity profile cones next. 
+- The velocity profile comes next. 
   ```
   velocity = np.sqrt( np.array(var_list).T[1]**2 + np.array(var_list).T[2]**2 )
   ax2.plot(np.array(rad_list)*model.units["r"], 
            velocity*model.units["v1"], 
            label="vr",color="black")
   ```
-  Before plotting, `velocity` is defined as the square root of the velocity components 1 and 2.  
+  Before plotting, `velocity` is defined as the norm of the velocity vector (v1 and v2).  
+
+- Finally, the code plots the outgoing luminosity. 
+  ```
+  flux = np.sqrt( np.array(var_list).T[3]**2 + np.array(var_list).T[4]**2 )
+  luminosity = flux*model.units["f1"] * 4.0*np.pi*(np.array(rad_list)*model.units["r"])**2
+  ax3.plot(np.array(rad_list)*model.units["r"], 
+                    luminosity, 
+                    color="black")
+    
+  ```
   
