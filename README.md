@@ -106,17 +106,17 @@ The resultant figure should look like this:
       rad_list.append(np.sqrt(r**2 + z**2))
   ```
   Here, r is fixed to unity and z in increased from 0 to 6000000. The norm of each coordinate is sotred in `rad_list` for later use. 
-- Then, the code retrieve several variables at the specified locations and keep them in a list `ver_list`. 
+- Then, the code retrieves several variables at the specified locations and keeps them in a list `ver_list`. 
   ```
-      var_list.append(model.get_values(f,[r,z],["rho","v1","v2","f1","f2","Xej","Xcsm"]))
+  var_list.append(model.get_values(f,[r,z],["rho","v1","v2","f1","f2","Xej","Xcsm"]))
   ```
-- Now, `rad_list` and `ver_list` contains 2000 set of radius and variables specified above. 
+- Now, `rad_list` and `ver_list` contains 2000 sets of radius and variables specified above. 
   For example, you can check the first 10 items in the list:
   ```
   print(rad_list[:10])
   print(var_list[:10])
   ```
-- Next, the code saves the retrieved values in a test file. The output filename has been specified at the top of the script:
+- Next, the code saves the retrieved values in a text file. The output filename has been specified at the top of the script:
   ```
   output_file="./test.txt"
   ```
@@ -131,7 +131,7 @@ The resultant figure should look like this:
   ```
   , in which the output file is opened as `fout` and `fout.write` is used to write the values down. 
 
-- This part is followed by plotting part, which makes 1D radial profiles of the density, the velocity, and the outgoing luminosity. For making plots, the code imports matplotlib in the beggining:
+- Next is the plotting part, which makes 1D radial profiles of the density, the velocity, and the outgoing luminosity. For making plots, the code imports matplotlib in the beginning:
   ```
   import matplotlib.pyplot as plt
   import matplotlib.gridspec as gridspec
@@ -145,7 +145,7 @@ The resultant figure should look like this:
   ax2 = fig.add_subplot(312)
   ax3 = fig.add_subplot(313)
   ```
-- In the top panel (ax1), the code plots the radial density profile obtained in the data retrieving part. 
+- In the top panel (ax1), the code shows the radial density profile obtained in the data retrieving part. 
   ```
   ax1.plot(np.array(rad_list)*model.units["r"], 
            np.array(var_list).T[0]*model.units["rho"],
