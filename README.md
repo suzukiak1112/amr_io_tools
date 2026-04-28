@@ -165,4 +165,6 @@ This example retrieve physical values from the model data, saves them in an ASCI
                    color="gray",alpha=0.3)
 
   ```
-  !["radial profile"]("radial.png")
+- The resultant figure should look like this:
+!["radial profile"]("radial.png")
+  
