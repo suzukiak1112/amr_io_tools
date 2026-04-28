@@ -93,11 +93,23 @@ The code reads the data file and extracts some values.
 ## make_1d_plot.py
 
 This example retrieve physical values from the model data and make 1D plots. 
-- In this example, after loading the model data with `read_model.data()`, the code makes the lists of coordinates (r,z). 
+- In this example, after loading the model data with `read_model.data()`, the code makes the list of coordinates (r,z), `rad_list`. 
   ```
   rad_list = []
   var_list = []
   for n in range(2000):
       r = 1.0
       z = 0.0 + 30.0e1 * n
+      rad_list.append(np.sqrt(r**2 + z**2))
+  ```
+  Here, r is fixed to unity and z in increased from 0 to 6000000. The norm of each coordinate is sotred in `rad_list` for later use. 
+- Then, the code retrieve several variables at the specified locations and keep them in a list `ver_list`. 
+  ```
+      var_list.append(model.get_values(f,[r,z],["rho","v1","v2","f1","f2","Xej","Xcsm"]))
+  ```
+- Now, `rad_list` and `ver_list` contains 2000 set of radius and variables specified above. 
+  For example, you can check the first 10 items in the list:
+  ```
+  print(rad_list[:10])
+  print(var_list[:10])
   ```
