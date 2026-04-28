@@ -92,7 +92,7 @@ The code reads the data file and extracts some values.
 
 ## make_1d_plot.py
 
-This example retrieve physical values from the model data and make 1D plots. 
+This example retrieve physical values from the model data, saves them in an ASCII format, and makes 1D plots. 
 - In this example, after loading the model data with `read_model.data()`, the code makes the list of coordinates (r,z), `rad_list`. 
   ```
   rad_list = []
@@ -112,4 +112,24 @@ This example retrieve physical values from the model data and make 1D plots.
   ```
   print(rad_list[:10])
   print(var_list[:10])
+  ```
+- Next, the code saves the retrieved values in a test file. The output filename has been specified at the top of the script:
+  ```
+  output_file="./test.txt"
+  ```
+- The output part is written like this:
+  ```
+  with open(output_file, mode="w") as fout:
+    for n in range(len(rad_list)):
+        fout.write(str(rad_list[n])+" ")
+        for var in var_list[n]:
+            fout.write(str(var)+" ")
+        fout.write("\n")
+  ```
+  , in which the output file is opened as `fout` and `fout.write` is used to write the values down. 
+
+- This part is followed by plotting part, which makes 1D radial profiles of the density, the velocity, and the outgoing luminosity. For making plots, the code imports matplotlib in the beggining:
+  ```
+  import matplotlib.pyplot as plt
+  import matplotlib.gridspec as gridspec
   ```
