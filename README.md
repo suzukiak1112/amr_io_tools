@@ -24,7 +24,7 @@ The three example codes show how to read and analyze a sample data file `snap.h5
 
 
 ## read_snapshot.py
-This example explains basic usage of the functions provided by `read_mdoel.py`
+This example explains how to use basic functions provided by `read_mdoel.py`
 The code reads the data file and extracts some values. 
 - First of all, the code starts with iimporting necessary modules:
   ```
@@ -67,6 +67,15 @@ The code reads the data file and extracts some values.
   dict_keys(['rho', 'v1', 'v2', 'v3', 'e_gas', 'e_rad', 'f1', 'f2', 'f3', 'e_rad_nt', 'f1_nt', 'f2_nt', 'f3_nt', 'Xej', 'Xcsm', 'Xrad', 'Xel', 'Xh', 'Xhe', 'Xc', 'Xn', 'Xo', 'Xne', 'Xmg', 'Xsi', 'Xs', 'Xar', 'Xca', 'Xfe'])
   ```
   Each label stands for density (rho), 3 components of velocity (v1, v2, v3), gas energy density (e_gas), thermal radiation energy density (e_rad), thermal radiation flux (f1, f2, f3), non-thermal radiation (e_rad_nt, f1_nt, f2_nt, f3_nt), ejecta mass fraction (Xej), CSM+ejecta mass fraction (Xcsm), mass fraction of radioactive nickel (Xrad), electron mass fraction (Xel) and mass fractions of 12 elements (Xh to Xfe).
+- Users can also check the units used for physical variables:
+  ```
+  print(model.var.keys())
+  ``` 
+  , which returns 
+  ```
+  {'r': 29979245800.0, 'z': 29979245800.0, 'rho': 1.0, 'v1': 29979245800.0, 'v2': 29979245800.0, 'v3': 29979245800.0, 'e_gas': 8.9875518e+20, 'e_rad': 8.9875518e+20, 'f1': 2.6944002e+31, 'f2': 2.6944002e+31, 'f3': 2.6944002e+31, 'e_rad_nt': 8.9875518e+20, 'f1_nt': 2.6944002e+31, 'f2_nt': 2.6944002e+31, 'f3_nt': 2.6944002e+31}
+  ```
+  In the orignal simulations, pysical variables are normalized by using the speed of light and second or 3rd powers. c, c^2, or c^3. 
 
 - Here, we retrieve density (rho), velocity (v1), and the radiation energy density (e_rad) by using the function `get_values()`:
    ```
@@ -74,7 +83,7 @@ The code reads the data file and extracts some values.
    z = 2.0e6
    print(model.get_values(f,[r,z],["rho","v1","e_rad"]))
    ```
-  Users give file f, the coordinate r and z, and the name list of variables (rho, v1, e_rad) for `getvalues()`.
+  Users give file f, the coordinate r and z, and the name list of variables (rho, v1, e_rad) for `get_values()`.
   In this example, we access vriables at r = 1e6 and z = 2e6, which is inside the numerical domain range.
   The corresponding terminal output should be
   ```
@@ -82,3 +91,5 @@ The code reads the data file and extracts some values.
   ```
 
 ## make_1d_plot.py
+This example retrieve physical values from the model data and make 1D plots. 
+- 
