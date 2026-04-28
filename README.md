@@ -28,8 +28,6 @@ This example explains basic usage of the functions provided by `read_mdoel.py`
 The code reads the data file and extracts some values. 
 - First of all, the code starts with iimporting necessary modules:
   ```
-  import matplotlib.pyplot as plt
-  import matplotlib.gridspec as gridspec
   import numpy as np
   import h5py
   import read_model
