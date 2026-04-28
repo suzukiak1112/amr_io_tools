@@ -91,5 +91,13 @@ The code reads the data file and extracts some values.
   ```
 
 ## make_1d_plot.py
+
 This example retrieve physical values from the model data and make 1D plots. 
-- 
+- In this example, after loading the model data with `read_model.data()`, the code makes the lists of coordinates (r,z). 
+  ```
+  rad_list = []
+  var_list = []
+  for n in range(2000):
+      r = 1.0
+      z = 0.0 + 30.0e1 * n
+  ```
