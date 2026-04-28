@@ -93,6 +93,9 @@ The code reads the data file and extracts some values.
 ## make_1d_plot.py
 
 This example retrieve physical values from the model data, saves them in an ASCII format, and makes 1D plots. 
+The resultant figure should look like this:
+!["radial profile"](radial.png)
+
 - In this example, after loading the model data with `read_model.data()`, the code makes the list of coordinates (r,z), `rad_list`. 
   ```
   rad_list = []
@@ -165,7 +168,5 @@ This example retrieve physical values from the model data, saves them in an ASCI
                    color="gray",alpha=0.3)
 
   ```
-- The resultant figure should look like this:
-
-!["radial profile"](radial.png)
+- 
   
