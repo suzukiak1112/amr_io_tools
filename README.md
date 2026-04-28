@@ -157,8 +157,8 @@ The resultant figure should look like this:
   The transpose `np.array(var_list).T` has its shape of (7, 2000) for plotting purpose. 
   By multiplying `model.units["r"]` and `model.units["rho"]`, the radius and density (normalized in the raw data) recoverdd their physical dimension. 
 - The code has retrieved the ejecta mass fraction Xej and CSM mass fraction Xcsm. These values are equal to 1 in ejecta (CSM) and 0 outside ejecta or CSM. 
-  Therefore, the product rho * Xej, for example, is equal torho in the ejecta, while is zero outside the ejecta. 
-  The following commant therefore fill the ejecta and ejecta+CSM with blue and gray color. 
+  Therefore, the product rho * Xej, for example, is equal to rho in the ejecta, while it is zero (or close to zero) outside the ejecta. 
+  The following command therefore fills the ejecta and ejecta+CSM with blue and gray color as in the figure above. 
   ```
   ax1.fill_between(np.array(rad_list)*model.units["r"], 
                    np.array(var_list).T[0]*model.units["rho"]*(np.array(var_list).T[5]), 
@@ -166,7 +166,13 @@ The resultant figure should look like this:
   ax1.fill_between(np.array(rad_list)*model.units["r"], 
                    np.array(var_list).T[0]*model.units["rho"]*(np.array(var_list).T[6]), 
                    color="gray",alpha=0.3)
-
   ```
-- 
+- The velocity profile cones next. 
+  ```
+  velocity = np.sqrt( np.array(var_list).T[1]**2 + np.array(var_list).T[2]**2 )
+  ax2.plot(np.array(rad_list)*model.units["r"], 
+           velocity*model.units["v1"], 
+           label="vr",color="black")
+  ```
+  Before plotting, `velocity` is defined as the square root of the velocity components 1 and 2.  
   
