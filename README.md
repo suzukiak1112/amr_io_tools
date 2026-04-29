@@ -208,6 +208,26 @@ The resultant figure should look like this:
   mesh_z = np.zeros([Nr+1, Nz+1])
   var = np.zeros([Nr, Nz])
   ```
-  In this example, the code creates a 2D map with $N_r=200$ and $N_z=400$ points in vertial and horizontal directions. The domain extending from $r=$ 0 to 5.0e5 in $r$ and from $z=$ -5.0e5 to 5.0e5 is considered.
+  In this example, the code creates a 2D map with $N_r=200$ and $N_z=400$ points in vertial and horizontal directions. The domain extending from $r=$ 0 to 5.0e5 and from $z=$ -5.0e5 to 5.0e5 is considered.
   The domain is discretized into 200 x 400 cells. `mesh_r` and `mesh_z` are defined as $(N_r+1,N_z+1)$ array and represent the cell boundaries. 
   `var` contains the information of the variable at each cell center and therefore its shale is $(N_r,N_z)$. 
+- In the following loop, the values at the cell center and cell boundaries are computed and retrieve the density at the cell center.
+  ```
+  for i in range(Nr):
+    r = 0.0 + dr * (i + 0.5)
+    for j in range(Nz):
+        z = -z_range*0.5 + dz * (j + 0.5)
+        mesh_r[i][j]   = mesh_r[i][j+1]   = 0.0 + dr * i
+        mesh_r[i+1][j] = mesh_r[i+1][j+1] = 0.0 + dr * (i+1)
+        mesh_z[i][j]   = mesh_z[i][j+1]   = -z_range*0.5 + dz * j
+        mesh_z[i+1][j] = mesh_z[i+1][j+1] = -z_range*0.5 + dz * (j+1)
+        var[i][j] = model.get_values(f,[r, z],["rho"])[0]
+  ```
+- Finally, in the plotting part, the code draw a 2D color contour of $log_{10}(\rho)$ by using `pcolor()`, save it to a PNG file, and show it in the screen. 
+  ```
+  fig=plt.figure()
+  ax1 = fig.add_subplot(111,aspect='equal')
+  ax1.pcolor(mesh_r, mesh_z, np.log10(var), vmin=-20, vmax=-12)
+  plt.savefig(figure_file,format='png',dpi=300)
+  plt.show()
+  ```
