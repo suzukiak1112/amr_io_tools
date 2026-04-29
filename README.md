@@ -174,7 +174,7 @@ The resultant figure should look like this:
            velocity*model.units["v1"], 
            label="vr",color="black")
   ```
-  Before plotting, `velocity` is defined as the norm of the velocity vector (v1 and v2).  
+  Before plotting, `velocity` is defined as the norm $v$ of the velocity vector (v1 and v2).  
 
 - Finally, the code plots the outgoing luminosity. 
   ```
@@ -183,6 +183,6 @@ The resultant figure should look like this:
   ax3.plot(np.array(rad_list)*model.units["r"], 
                     luminosity, 
                     color="black")
-    
   ```
-  
+  In the first line, the code computes the norm of the flux $F$ from fv1 and f2. 
+  Then, the luminosity is computed from $L = 4\pi R^2 F$ and plotted. 
