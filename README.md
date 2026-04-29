@@ -190,4 +190,9 @@ The resultant figure should look like this:
 
   ## make_2d_plot.py
 
-- Making 2D plots is simply an combintaion of the 
+- Making 2D plots is simply an combintaion of the function already introduced above. 
+  Initially, the code specifies the data filaname and output filename:
+  ```
+  input_file="./snap.h5"
+  figure_file="./test.png"
+  ```
