@@ -208,6 +208,6 @@ The resultant figure should look like this:
   mesh_z = np.zeros([Nr+1, Nz+1])
   var = np.zeros([Nr, Nz])
   ```
-  In this example, we created a 2D map with $N_r=200$ and $N_z=400$ points in vertial and horizontal directions. The domain extending from $r=$0 to 5.0e5 in $r$ and from $z=$-5.0e5 to 5.0e5 is considered.
+  In this example, the code creates a 2D map with $N_r=200$ and $N_z=400$ points in vertial and horizontal directions. The domain extending from $r=$ 0 to 5.0e5 in $r$ and from $z=$ -5.0e5 to 5.0e5 is considered.
   The domain is discretized into 200 x 400 cells. `mesh_r` and `mesh_z` are defined as $(N_r+1,N_z+1)$ array and represent the cell boundaries. 
   `var` contains the information of the variable at each cell center and therefore its shale is $(N_r,N_z)$. 
