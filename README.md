@@ -184,5 +184,5 @@ The resultant figure should look like this:
                     luminosity, 
                     color="black")
   ```
-  In the first line, the code computes the norm of the flux $F$ from fv1 and f2. 
-  Then, the luminosity is computed from $L = 4\pi R^2 F$ and plotted. 
+  In the first line, the code computes the norm of the flux `flux` from fv1 and f2. 
+  Then, `luminosity` is computed from $L = 4\pi R^2 F$ and plotted. 
