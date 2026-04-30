@@ -193,7 +193,7 @@ The resultant figure should look like this:
 - Making 2D plots is simply a combination of the functions already introduced above. 
   (**Note**: it took 2-3 minutes on my laptop)
   The resultant figure should look like this:
-  !["radial profile"](radial.png)
+  !["spherical"](2d_spherical.png)
 
 - Initially, the code specifies the data filaname and output filename:
   ```
